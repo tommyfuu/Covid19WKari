@@ -8,9 +8,9 @@ df = pd.read_excel('Cardiovascular2014-.xlsx', usecols=['Fips_text', 'Mortality'
 # dfDict = dict(zip(df['Fips_text'], df['Mortality']))
 # print(dfDict)
 #make covid dict
-covid = pd.read_excel('./04-22-2020COVIDC.xls', usecols=['Province_State', 'ConfirmedText'], dtype={'FIPS_Text': str})
-covidDict = dict(zip(covid['Province_State'], covid['ConfirmedText']))
-# print(covidDict)
+covid = pd.read_excel('./04-22-2020COVIDC.xls', usecols=['Province_State', 'ConfirmedText', 'FIPS_Text'], dtype={'FIPS_Text': str})
+covidDictName = dict(zip(covid['Province_State'], covid['ConfirmedText']))
+covidDictFIPS = dict(zip(covid['FIPS_Text'], covid['ConfirmedText']))
 
 
 
