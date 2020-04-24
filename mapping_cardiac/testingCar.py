@@ -4,10 +4,17 @@ import json
 import plotly.express as px
 
 df = pd.read_excel('Cardiovascular2014-.xlsx', usecols=['Fips_text', 'Mortality', 'Location'], dtype={'Fips_text': str})
-covid = pd.read_excel('04-22-2020COVIDC.xlsx', usecols=['FIPS_Text', 'Confirmed'], dtype={'FIPS_Text': str})
+#make df dict
+# dfDict = dict(zip(df['Fips_text'], df['Mortality']))
+# print(dfDict)
+#make covid dict
+covid = pd.read_excel('./04-22-2020COVIDC.xls', usecols=['Province_State', 'ConfirmedText'], dtype={'FIPS_Text': str})
+covidDict = dict(zip(covid['Province_State'], covid['ConfirmedText']))
+# print(covidDict)
 
 
-#mortalityNumerical = df['Mortality Rate, 2014*'][:6]
+
+
 with open('counties_locations.json') as response:
     counties = json.load(response)
 
@@ -18,7 +25,7 @@ fig = go.Figure(data=go.Choropleth(
     geojson = counties, # set of locations match entries in `locations`
     colorscale = 'Blues',
     colorbar_title = "Cardiovascular Death per 10,000",
-    text = df['Location'] + "WHAT", # give county names
+    text = df['Location'] + "/n COVID 19 Cases: ", # give county names
 ))
 
 fig.update_layout(
