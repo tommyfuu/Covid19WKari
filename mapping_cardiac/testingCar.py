@@ -14,7 +14,6 @@ df = pd.read_excel('Cardiovascular2014-.xlsx', usecols=['Fips_text', 'Mortality'
 
 
 
-
 with open('counties_locations.json') as response:
     counties = json.load(response)
 
@@ -35,3 +34,4 @@ fig.update_layout(
 
 
 fig.show()
+
